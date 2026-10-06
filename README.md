@@ -20,7 +20,7 @@ npm run preview    # serve o build localmente
 | CSV lido pelo site (`VITE_PRODUCTS_CSV_URL`) | `https://docs.google.com/spreadsheets/d/1Nbdiw9G8l6Zr-WNv2FxjALliIgeeXwj3IQ31GDtzFrE/export?format=csv` |
 | Pasta de imagens dos produtos | [https://drive.google.com/drive/folders/11aUz5eBTMwuwsWMg1uTQuRcCmg3Qvr7z](https://drive.google.com/drive/folders/11aUz5eBTMwuwsWMg1uTQuRcCmg3Qvr7z) |
 
-Ambos ficam no Google Drive pessoal do Iggor e precisam continuar
+Ambos ficam no Google Drive pessoal do Iggor (igor.moreiramodesto@gmail.com) e precisam continuar
 compartilhados como **"Qualquer pessoa com o link: Leitor"**: o site lê a planilha e as fotos sem login.
 
 - Para cadastrar ou alterar produtos, edite a planilha. O site mostra a mudança ao recarregar a página.

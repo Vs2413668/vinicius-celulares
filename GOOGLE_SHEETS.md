@@ -19,7 +19,7 @@ de `src/data/products.ts`. Esses registros servem apenas para visualizar o layou
 - **CSV lido pelo site:** `https://docs.google.com/spreadsheets/d/1Nbdiw9G8l6Zr-WNv2FxjALliIgeeXwj3IQ31GDtzFrE/export?format=csv` (configurado em `VITE_PRODUCTS_CSV_URL`, arquivo `.env`)
 - **Pasta de imagens:** [https://drive.google.com/drive/folders/11aUz5eBTMwuwsWMg1uTQuRcCmg3Qvr7z](https://drive.google.com/drive/folders/11aUz5eBTMwuwsWMg1uTQuRcCmg3Qvr7z)
 
-Os dois ficam no Google Drive pessoal do Iggor, compartilhados como
+Os dois ficam no Google Drive pessoal do Iggor (igor.moreiramodesto@gmail.com), compartilhados como
 "Qualquer pessoa com o link: Leitor".
 
 ## Atalho: importar a planilha pronta
