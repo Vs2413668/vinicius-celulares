@@ -8,14 +8,20 @@ import './Intro.css';
  */
 export default function Intro() {
   const ref = useRef<HTMLDivElement>(null);
+  // Sempre começa visível (igual ao HTML pré-renderizado); com reduced motion
+  // é removida antes da primeira pintura.
   const [visible, setVisible] = useState(() => {
     introState.playing = getIntroDuration() > 0;
-    return introState.playing;
+    return true;
   });
 
   useGSAP(
     () => {
       if (!visible) return;
+      if (!introState.playing) {
+        setVisible(false);
+        return;
+      }
       const total = getIntroDuration();
       const short = total < 1;
       const tl = gsap.timeline({

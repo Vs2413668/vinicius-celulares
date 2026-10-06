@@ -3,37 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <!-- Bloco substituído por página no build (scripts/prerender.mjs) e atualizado na navegação (useSeo). -->
+    <!--seo-->
     <title>Vinícius Celulares | Assistência Técnica no Jardim Ingá</title>
-    <meta name="description" content="Vinícius Celulares — assistência técnica especializada em celulares, computadores, acessórios e eletrônicos. Reparo, manutenção e atendimento de confiança no Jardim Ingá." />
+    <meta name="description" content="Vinícius Celulares — assistência técnica especializada em celulares, computadores, acessórios e eletrônicos. Reparo, manutenção e atendimento de confiança no Jardim Ingá." data-seo />
+    <!--/seo-->
     <meta name="theme-color" content="#050505" />
     <meta name="color-scheme" content="dark" />
-    <!-- site-meta -->
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="application-name" content="Vinícius Celulares" />
+    <meta name="apple-mobile-web-app-title" content="Vinícius Celulares" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
 
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="pt_BR" />
-    <meta property="og:site_name" content="Vinícius Celulares" />
-    <meta property="og:title" content="Vinícius Celulares | Assistência Técnica no Jardim Ingá" />
-    <meta property="og:description" content="Assistência técnica especializada em celulares, computadores, acessórios e eletrônicos. Reparo, manutenção e atendimento de confiança no Jardim Ingá." />
-    <meta property="og:image" content="__SITE_URL__/images/og-image.jpg" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Logo Vinícius Celulares — Manutenção e Acessórios" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Vinícius Celulares | Assistência Técnica no Jardim Ingá" />
-    <meta name="twitter:image" content="__SITE_URL__/images/og-image.jpg" />
+    <script>
+      // Esconde o HTML pré-renderizado até o React aplicar o estado inicial das animações (evita "piscar").
+      document.documentElement.classList.add('js-hydrating');
+    </script>
+    <style>
+      .js-hydrating #root { visibility: hidden; animation: reveal-root 0s 4s forwards; }
+      @keyframes reveal-root { to { visibility: visible; } }
+    </style>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <noscript>
-      <p style="color:#f5f5f5;background:#050505;padding:24px;font-family:sans-serif">
-        Vinícius Celulares — Assistência técnica especializada. WhatsApp: (61) 99139-1350.
-      </p>
-    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

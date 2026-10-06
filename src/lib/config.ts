@@ -9,6 +9,13 @@ export const company = {
   whatsapp: '5561991391350',
   whatsappDisplay: '(61) 99139-1350',
   address: 'Av. Joaquim Gilberto, Quadra 79 lote 21',
+  /**
+   * Complementos do endereço usados nos dados estruturados (SEO local).
+   * Preencher somente com dados confirmados pelo cliente; vazios são omitidos.
+   */
+  city: '' as string,
+  state: '' as string,
+  postalCode: '' as string,
   hours: {
     weekdays: '08:30 às 18:30',
     saturday: '08:30 às 14:00',

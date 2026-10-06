@@ -189,6 +189,9 @@ endereço alternativo e, se ainda falhar, mostra a última versão carregada naq
 - **Alterações de produtos:** basta editar a planilha. O Google atualiza o CSV publicado
   em alguns minutos (cache de ~5 min) e o site passa a exibir os novos dados no próximo
   carregamento da página — sem novo deploy.
+- **Google (SEO):** o HTML estático de cada produto e o `sitemap.xml` são gerados no build.
+  Depois de cadastrar produtos novos (ou mudar nomes, que alteram a URL), faça um novo
+  deploy para que eles entrem no sitemap e sejam indexados mais rápido.
 - **Alteração da URL da planilha:** atualize `VITE_PRODUCTS_CSV_URL` e faça um novo build/deploy
   (`npm run build`).
 

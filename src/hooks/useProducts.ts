@@ -23,7 +23,9 @@ export function useProducts() {
       .then((products) => !cancelled && setState({ status: 'success', products }))
       .catch((error: unknown) => {
         if (cancelled) return;
-        setState({ status: 'error', message: error instanceof Error ? error.message : 'Erro desconhecido' });
+        const message = error instanceof Error ? error.message : 'Erro desconhecido';
+        // Se a página já exibe produtos (snapshot do build), mantém a lista.
+        setState((current) => (current.status === 'success' ? current : { status: 'error', message }));
       });
     return () => {
       cancelled = true;

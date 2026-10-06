@@ -7,7 +7,8 @@ import { routes } from '../lib/routes';
 import { createWhatsAppLink } from '../lib/whatsapp';
 import { reveal } from '../lib/animations';
 import { gsap } from '../lib/gsap';
-import { useDocumentMeta } from '../hooks/useDocumentMeta';
+import { useSeo } from '../hooks/useSeo';
+import { loadingSeo, notFoundSeo, productBreadcrumbs, productSeo } from '../lib/pageSeo';
 import { useGsap } from '../hooks/useGsap';
 import { useProducts } from '../hooks/useProducts';
 import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
@@ -17,7 +18,7 @@ import ProductGallery from '../components/ProductGallery/ProductGallery';
 import { ProductsMessage } from '../components/Products/ProductsStatus';
 import ButtonLink from '../components/ui/ButtonLink';
 import WhatsAppIcon from '../components/ui/WhatsAppIcon';
-import NotFoundPage from './NotFoundPage';
+import NotFoundPage, { notFoundTexts } from './NotFoundPage';
 import './ProductPage.css';
 
 export default function ProductPage() {
@@ -29,9 +30,12 @@ export default function ProductPage() {
   const product = products?.find((p) => p.slug === slug);
   const related = useMemo(() => (products && product ? getRelatedProducts(products, product) : []), [products, product]);
 
-  useDocumentMeta(
-    product ? `${product.name} | Vinícius Celulares` : 'Produto | Vinícius Celulares',
-    product ? `${product.name} — ${product.description}` : undefined,
+  useSeo(
+    product
+      ? productSeo(product)
+      : products
+        ? notFoundSeo(notFoundTexts.product.title, notFoundTexts.product.message)
+        : loadingSeo(routes.product(slug ?? ''), 'Produto'),
   );
 
   useGsap(
@@ -70,7 +74,7 @@ export default function ProductPage() {
   }
 
   if (!product) {
-    return <NotFoundPage title="Produto não encontrado" message="Este produto não está mais disponível ou o endereço foi alterado." />;
+    return <NotFoundPage {...notFoundTexts.product} />;
   }
 
   const condition = getDisplayedCondition(product);
@@ -84,14 +88,7 @@ export default function ProductPage() {
 
       <div className="container">
         <div className="product-page__top">
-          <Breadcrumbs
-            items={[
-              { label: 'Início', to: routes.home },
-              { label: 'Produtos', to: routes.catalog },
-              { label: product.category, to: routes.category(product.categorySlug) },
-              { label: product.name },
-            ]}
-          />
+          <Breadcrumbs items={productBreadcrumbs(product)} />
           <Link to={routes.category(product.categorySlug)} className="product-page__back">
             <ArrowLeft size={16} aria-hidden="true" />
             Voltar para {product.category}
@@ -183,7 +180,7 @@ export default function ProductPage() {
                 Você também pode gostar
               </h2>
               <Link to={routes.catalog} className="product-related__all">
-                Ver todos
+                Ver todos os produtos
               </Link>
             </div>
             <ul className="product-related__grid">

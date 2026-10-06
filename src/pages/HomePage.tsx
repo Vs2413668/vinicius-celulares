@@ -1,4 +1,5 @@
-import { useDocumentMeta } from '../hooks/useDocumentMeta';
+import { useSeo } from '../hooks/useSeo';
+import { homeSeo } from '../lib/pageSeo';
 import About from '../components/About/About';
 import Contact from '../components/Contact/Contact';
 import Hero from '../components/Hero/Hero';
@@ -8,7 +9,7 @@ import Services from '../components/Services/Services';
 import WhyUs from '../components/WhyUs/WhyUs';
 
 export default function HomePage() {
-  useDocumentMeta();
+  useSeo(homeSeo());
   return (
     <>
       <Hero />

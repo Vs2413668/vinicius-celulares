@@ -27,7 +27,7 @@ function ProductCard({ product, headingLevel: Heading = 'h4' }: ProductCardProps
       <div className="product-card__media">
         <img
           src={image}
-          alt=""
+          alt={product.name}
           width={720}
           height={900}
           loading="lazy"

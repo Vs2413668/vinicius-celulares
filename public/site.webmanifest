@@ -1,0 +1,14 @@
+{
+  "name": "Vinícius Celulares",
+  "short_name": "Vinícius Cel.",
+  "description": "Assistência técnica especializada em celulares, computadores, acessórios e eletrônicos no Jardim Ingá.",
+  "lang": "pt-BR",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#050505",
+  "theme_color": "#050505",
+  "icons": [
+    { "src": "/favicon.png", "sizes": "64x64", "type": "image/png" },
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}

@@ -12,14 +12,15 @@ import {
 } from '../lib/products';
 import { routes } from '../lib/routes';
 import { createWhatsAppLink } from '../lib/whatsapp';
-import { useDocumentMeta } from '../hooks/useDocumentMeta';
+import { useSeo } from '../hooks/useSeo';
+import { catalogSeo, loadingSeo, notFoundSeo } from '../lib/pageSeo';
 import { useProducts } from '../hooks/useProducts';
 import PageHeader from '../components/PageHeader/PageHeader';
 import type { ScrollState } from '../components/ScrollManager';
 import ProductCard from '../components/ProductCard/ProductCard';
 import { ProductsMessage, ProductsSkeleton } from '../components/Products/ProductsStatus';
 import ButtonLink from '../components/ui/ButtonLink';
-import NotFoundPage from './NotFoundPage';
+import NotFoundPage, { notFoundTexts } from './NotFoundPage';
 import './CatalogPage.css';
 
 const keepScroll: ScrollState = { preserveScroll: true };
@@ -52,7 +53,13 @@ export default function CatalogPage() {
 
   const missingCategory = Boolean(products && categoria && !category);
   const title = category?.name ?? 'Produtos';
-  useDocumentMeta(missingCategory ? 'Categoria não encontrada | Vinícius Celulares' : `${title} | Vinícius Celulares`, LEAD);
+  useSeo(
+    missingCategory
+      ? notFoundSeo(notFoundTexts.category.title, notFoundTexts.category.message)
+      : products
+        ? catalogSeo(category, products)
+        : loadingSeo(categoria ? routes.category(categoria) : routes.catalog, title),
+  );
 
   const updateParam = (key: string, value: string, fallback = '') => {
     setParams(
@@ -100,7 +107,7 @@ export default function CatalogPage() {
   );
 
   if (missingCategory) {
-    return <NotFoundPage title="Categoria não encontrada" message="Esta categoria não existe ou não possui produtos no momento." />;
+    return <NotFoundPage {...notFoundTexts.category} />;
   }
 
   const breadcrumbs = [
@@ -145,6 +152,7 @@ export default function CatalogPage() {
         </aside>
 
         <div className="catalog-page__main">
+          <h2 className="sr-only">{category ? `Produtos da categoria ${category.name}` : 'Todos os produtos'}</h2>
           <div className="catalog-toolbar">
             <label className="catalog-search">
               <Search size={18} aria-hidden="true" />

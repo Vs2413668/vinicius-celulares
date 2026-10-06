@@ -251,6 +251,14 @@ let resolved: Product[] | null = null;
 /** Produtos já carregados nesta sessão (evita estado de loading ao trocar de página). */
 export const getCachedProducts = () => resolved;
 
+/**
+ * Produtos embutidos no HTML pré-renderizado (snapshot do build). São exibidos
+ * de imediato; a primeira chamada a getProducts() ainda relê a planilha.
+ */
+export function seedProducts(products: Product[]) {
+  resolved = products;
+}
+
 async function loadProducts(): Promise<Product[]> {
   const rows = usingMockProducts ? mockProductRows : await fetchSheetRows();
   return ensureUniqueSlugs(

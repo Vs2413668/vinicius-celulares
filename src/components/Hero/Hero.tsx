@@ -84,10 +84,11 @@ export default function Hero() {
           <HeroRings />
           <img
             className="hero__logo"
-            src="/images/logo.jpeg"
+            src="/images/logo.webp"
             alt="Logo Vinícius Celulares — Manutenção e Acessórios"
-            width={1000}
-            height={1000}
+            width={800}
+            height={800}
+            decoding="async"
             fetchPriority="high"
           />
         </div>
