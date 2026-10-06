@@ -3,3 +3,7 @@ dist
 .env.local
 .DS_Store
 *.tsbuildinfo
+
+# Instruções locais do Claude Code
+claude.md
+CLAUDE.md

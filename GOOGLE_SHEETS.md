@@ -13,6 +13,15 @@ de `src/data/products.ts`. Esses registros servem apenas para visualizar o layou
 
 ---
 
+## Planilha e pasta em uso
+
+- **Planilha:** [https://docs.google.com/spreadsheets/d/1Nbdiw9G8l6Zr-WNv2FxjALliIgeeXwj3IQ31GDtzFrE/edit](https://docs.google.com/spreadsheets/d/1Nbdiw9G8l6Zr-WNv2FxjALliIgeeXwj3IQ31GDtzFrE/edit)
+- **CSV lido pelo site:** `https://docs.google.com/spreadsheets/d/1Nbdiw9G8l6Zr-WNv2FxjALliIgeeXwj3IQ31GDtzFrE/export?format=csv` (configurado em `VITE_PRODUCTS_CSV_URL`, arquivo `.env`)
+- **Pasta de imagens:** [https://drive.google.com/drive/folders/11aUz5eBTMwuwsWMg1uTQuRcCmg3Qvr7z](https://drive.google.com/drive/folders/11aUz5eBTMwuwsWMg1uTQuRcCmg3Qvr7z)
+
+Os dois ficam no Google Drive pessoal do Iggor, compartilhados como
+"Qualquer pessoa com o link: Leitor".
+
 ## Atalho: importar a planilha pronta
 
 O arquivo [`planilha/produtos.csv`](planilha/produtos.csv) já tem todas as colunas e os 13 produtos atuais.
