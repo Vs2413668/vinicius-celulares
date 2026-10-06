@@ -1,0 +1,232 @@
+.why {
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 50% 60% at 0% 50%, rgba(22, 139, 255, 0.07), transparent 70%),
+    linear-gradient(180deg, var(--c-black-2), var(--c-black));
+}
+
+.why__circuit {
+  opacity: 0.35;
+}
+
+.why__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(40px, 6vw, 96px);
+  align-items: start;
+}
+
+.why__aside {
+  position: sticky;
+  top: calc(var(--nav-h) + 48px);
+}
+
+.why__aside .section-title {
+  font-size: clamp(30px, 4.2vw, 54px);
+}
+
+.why__aside-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+}
+
+.why__aside-meta span:first-child {
+  font-size: 40px;
+  letter-spacing: 0;
+  color: var(--c-white);
+}
+
+.why__aside-line {
+  width: 64px;
+  height: 1px;
+  background: var(--c-blue);
+  box-shadow: 0 0 8px var(--c-blue);
+}
+
+/* ---------- Lista com trilha ---------- */
+
+.why__track {
+  position: relative;
+  padding-left: 28px;
+}
+
+.why__list {
+  display: grid;
+  gap: 18px;
+}
+
+.why__spine {
+  position: absolute;
+  left: 6px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: var(--c-line-strong);
+}
+
+.why__spine-fill {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--c-blue-2), var(--c-blue));
+  box-shadow: 0 0 10px var(--c-blue);
+  transform-origin: top;
+  transform: scaleY(0);
+}
+
+.why__item {
+  --step: 0;
+  --offset: calc(var(--step) * 28px);
+  position: relative;
+  padding-left: calc(var(--offset) + 36px);
+}
+
+.why__node {
+  position: absolute;
+  left: -27px;
+  top: 38px;
+  width: 11px;
+  height: 11px;
+  border: 1px solid var(--c-line-strong);
+  background: var(--c-black);
+  transform: rotate(45deg);
+  transition:
+    border-color 0.4s,
+    background-color 0.4s,
+    box-shadow 0.4s;
+}
+
+.why__connector {
+  position: absolute;
+  left: -16px;
+  top: 43px;
+  width: calc(var(--offset) + 52px);
+  height: 1px;
+  background: linear-gradient(90deg, var(--c-blue-2), rgba(22, 139, 255, 0.2));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.8s var(--ease-out) 0.1s;
+}
+
+.why__card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 22px;
+  align-items: start;
+  padding: 22px 24px;
+  border: 1px solid var(--c-line);
+  border-radius: var(--radius);
+  background: rgba(17, 17, 17, 0.72);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition:
+    border-color 0.5s,
+    translate 0.4s var(--ease-out),
+    box-shadow 0.4s;
+}
+
+.why__number {
+  font-size: clamp(30px, 3vw, 40px);
+  line-height: 1;
+  color: var(--c-graphite-3);
+  -webkit-text-stroke: 1px rgba(197, 202, 208, 0.35);
+  transition:
+    color 0.5s,
+    -webkit-text-stroke-color 0.5s;
+}
+
+.why__body {
+  display: grid;
+  gap: 6px;
+}
+
+.why__title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: clamp(17px, 1.6vw, 20px);
+  letter-spacing: 0;
+}
+
+.why__icon {
+  flex: none;
+  color: var(--c-muted);
+  transition: color 0.4s;
+}
+
+.why__text {
+  color: var(--c-muted);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.why__item.is-active .why__node {
+  border-color: var(--c-blue-2);
+  background: var(--c-blue);
+  box-shadow: 0 0 14px var(--c-blue);
+}
+
+.why__item.is-active .why__connector {
+  transform: scaleX(1);
+}
+
+.why__item.is-active .why__number {
+  color: var(--c-white);
+  -webkit-text-stroke-color: transparent;
+}
+
+.why__item.is-active .why__icon {
+  color: var(--c-blue-2);
+}
+
+.why__item.is-active .why__text {
+  color: var(--c-silver);
+}
+
+@media (hover: hover) {
+  .why__card:hover {
+    translate: 4px 0;
+    border-color: rgba(22, 139, 255, 0.4);
+    box-shadow: 0 0 26px -10px rgba(22, 139, 255, 0.4);
+  }
+}
+
+@media (max-width: 1023px) {
+  .why__grid {
+    grid-template-columns: 1fr;
+  }
+  .why__aside {
+    position: static;
+  }
+  .why__aside-meta {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .why__item {
+    --offset: 0px;
+    padding-left: 28px;
+  }
+  .why__track {
+    padding-left: 20px;
+  }
+  .why__node {
+    left: -19px;
+  }
+  .why__connector {
+    left: -8px;
+    width: 36px;
+  }
+  .why__card {
+    gap: 14px;
+    padding: 18px;
+  }
+  .why__title {
+    align-items: flex-start;
+  }
+}

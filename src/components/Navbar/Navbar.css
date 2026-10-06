@@ -1,0 +1,236 @@
+.nav {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+  height: var(--nav-h);
+  border-bottom: 1px solid transparent;
+  transition:
+    background-color 0.4s var(--ease-out),
+    border-color 0.4s,
+    backdrop-filter 0.4s;
+}
+
+.nav--scrolled,
+.nav--open {
+  background: rgba(8, 8, 8, 0.72);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-bottom-color: var(--c-line);
+}
+
+/* backdrop-filter tornaria o header o bloco de contenção do drawer fixo. */
+.nav--open {
+  background: var(--c-black);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.nav--scrolled::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -1px;
+  width: 160px;
+  height: 1px;
+  margin-left: -80px;
+  background: linear-gradient(90deg, transparent, var(--c-blue), transparent);
+  opacity: 0.7;
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  height: 100%;
+}
+
+.nav__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: none;
+  min-height: 44px;
+}
+
+.nav__mark,
+.nav__wordmark {
+  height: auto;
+}
+
+.nav__mark {
+  width: 40px;
+}
+
+.nav__wordmark {
+  width: 148px;
+}
+
+.nav__links ul {
+  display: flex;
+  gap: clamp(14px, 2vw, 32px);
+}
+
+.nav__link {
+  position: relative;
+  display: inline-block;
+  padding: 10px 2px;
+  font-family: var(--font-display);
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--c-silver);
+  transition: color 0.2s;
+}
+
+.nav__link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 4px;
+  height: 1px;
+  background: var(--c-blue-2);
+  box-shadow: 0 0 8px var(--c-blue);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s var(--ease-out);
+}
+
+.nav__link:hover,
+.nav__link[aria-current] {
+  color: var(--c-white);
+}
+
+.nav__link:hover::after,
+.nav__link[aria-current]::after {
+  transform: scaleX(1);
+}
+
+.nav__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav__toggle {
+  display: none;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--c-line-strong);
+  border-radius: var(--radius-sm);
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.nav__toggle:hover,
+.nav__toggle[aria-expanded='true'] {
+  border-color: var(--c-blue);
+  background: rgba(22, 139, 255, 0.08);
+}
+
+.nav__drawer {
+  position: fixed;
+  inset: var(--nav-h) 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 32px var(--gutter) max(32px, env(safe-area-inset-bottom));
+  background:
+    radial-gradient(circle at 100% 0%, rgba(22, 139, 255, 0.12), transparent 50%),
+    var(--c-black);
+  overflow-y: auto;
+}
+
+.nav__drawer[hidden] {
+  display: none;
+}
+
+.nav__drawer ol {
+  display: grid;
+}
+
+.nav__drawer li {
+  border-bottom: 1px solid var(--c-line);
+  animation: drawer-in 0.45s var(--ease-out) both;
+}
+
+.nav__drawer li:nth-child(1) { animation-delay: 0.04s; }
+.nav__drawer li:nth-child(2) { animation-delay: 0.08s; }
+.nav__drawer li:nth-child(3) { animation-delay: 0.12s; }
+.nav__drawer li:nth-child(4) { animation-delay: 0.16s; }
+.nav__drawer li:nth-child(5) { animation-delay: 0.2s; }
+.nav__drawer li:nth-child(6) { animation-delay: 0.24s; }
+
+@keyframes drawer-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+.nav__drawer a:not(.btn) {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  padding: 18px 4px;
+  font-family: var(--font-display);
+  font-size: clamp(24px, 7vw, 34px);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.nav__drawer a .mono {
+  font-size: 12px;
+  color: var(--c-blue-2);
+}
+
+.nav__drawer a[aria-current] {
+  color: var(--c-white);
+}
+
+.nav__drawer a:not([aria-current]):not(.btn) {
+  color: var(--c-silver);
+}
+
+.nav__drawer-footer {
+  display: grid;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.nav__drawer-meta {
+  font-size: 12px;
+  color: var(--c-muted);
+  text-align: center;
+}
+
+@media (max-width: 1199px) {
+  .nav__links {
+    display: none;
+  }
+  .nav__toggle {
+    display: grid;
+  }
+}
+
+@media (max-width: 479px) {
+  .nav__cta {
+    display: none;
+  }
+  .nav__wordmark {
+    width: 128px;
+  }
+  .nav__mark {
+    width: 34px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .nav__drawer {
+    display: none;
+  }
+}

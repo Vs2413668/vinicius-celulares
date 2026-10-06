@@ -1,0 +1,196 @@
+.about {
+  background:
+    radial-gradient(ellipse 60% 50% at 85% 40%, rgba(22, 139, 255, 0.06), transparent 70%),
+    linear-gradient(180deg, var(--c-black) 0%, var(--c-black-2) 100%);
+}
+
+.about__circuit {
+  opacity: 0.8;
+  mask-image: linear-gradient(90deg, #000 0%, transparent 45%);
+  -webkit-mask-image: linear-gradient(90deg, #000 0%, transparent 45%);
+}
+
+.about__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(48px, 7vw, 120px);
+  align-items: center;
+}
+
+.about__text {
+  display: grid;
+  gap: 18px;
+  max-width: 560px;
+  color: var(--c-silver);
+  font-size: clamp(16px, 1.3vw, 18px);
+}
+
+.about__text p:first-child {
+  color: var(--c-text);
+  font-size: clamp(18px, 1.6vw, 21px);
+  line-height: 1.55;
+}
+
+.about__years {
+  display: flex;
+  align-items: flex-end;
+  gap: 24px;
+  margin-top: clamp(40px, 5vw, 64px);
+  padding-top: 32px;
+  border-top: 1px solid var(--c-line);
+}
+
+.about__years-number {
+  font-family: var(--font-display);
+  font-size: clamp(88px, 12vw, 168px);
+  font-weight: 600;
+  line-height: 0.82;
+  letter-spacing: -0.04em;
+  filter: drop-shadow(0 0 30px rgba(22, 139, 255, 0.25));
+}
+
+.about__years-copy {
+  display: grid;
+  gap: 10px;
+  padding-bottom: 6px;
+}
+
+.about__years-label {
+  font-size: 14px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--c-white);
+}
+
+.about__years-line {
+  display: block;
+  width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--c-blue-2), transparent);
+  box-shadow: 0 0 10px var(--c-blue);
+}
+
+.about__years-text {
+  max-width: 240px;
+  color: var(--c-silver);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* ---------- Fotos ---------- */
+
+.about__media {
+  position: relative;
+  padding: 0 0 16% 16%;
+}
+
+.store-photo__media {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--c-line-strong);
+  border-radius: var(--radius);
+  background: var(--c-graphite);
+}
+
+.store-photo__media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(5, 5, 5, 0) 50%, rgba(5, 5, 5, 0.55) 100%),
+    radial-gradient(ellipse at center, transparent 55%, rgba(5, 5, 5, 0.45) 100%);
+}
+
+.store-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.82) contrast(1.06) brightness(0.88);
+}
+
+.store-photo__placeholder {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 12px;
+  height: 100%;
+  color: var(--c-muted);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background:
+    linear-gradient(rgba(197, 202, 208, 0.04) 1px, transparent 1px) 0 0 / 32px 32px,
+    linear-gradient(90deg, rgba(197, 202, 208, 0.04) 1px, transparent 1px) 0 0 / 32px 32px,
+    var(--c-graphite);
+}
+
+.about__photo--main .store-photo__media {
+  aspect-ratio: 4 / 5;
+  box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.9);
+}
+
+.about__photo--inset {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 46%;
+  z-index: 2;
+}
+
+.about__photo--inset .store-photo__media {
+  aspect-ratio: 3 / 4;
+  box-shadow:
+    0 30px 60px -20px rgba(0, 0, 0, 0.95),
+    0 0 0 6px var(--c-black-2);
+}
+
+.about__photo--inset.tech-frame::before,
+.about__photo--inset.tech-frame::after {
+  display: none;
+}
+
+.about__tag {
+  position: absolute;
+  right: -12px;
+  bottom: 12%;
+  z-index: 3;
+  display: grid;
+  gap: 2px;
+  padding: 12px 16px;
+  border: 1px solid var(--c-line-strong);
+  border-left: 2px solid var(--c-blue);
+  border-radius: var(--radius-sm);
+  background: rgba(13, 13, 13, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+}
+
+.about__tag span:first-child {
+  color: var(--c-white);
+}
+
+@media (max-width: 1023px) {
+  .about__grid {
+    grid-template-columns: 1fr;
+  }
+  .about__media {
+    max-width: 560px;
+    width: 100%;
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .about__years {
+    gap: 18px;
+  }
+  .about__tag {
+    right: 0;
+    bottom: 4%;
+  }
+}

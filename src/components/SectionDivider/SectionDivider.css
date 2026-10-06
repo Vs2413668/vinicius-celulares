@@ -1,0 +1,40 @@
+.divider {
+  position: relative;
+  height: 1px;
+  max-width: calc(var(--container) + var(--gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.divider__line {
+  position: relative;
+  height: 1px;
+  overflow: hidden;
+  background: linear-gradient(90deg, transparent, var(--c-line-strong) 20%, var(--c-line-strong) 80%, transparent);
+}
+
+.divider__beam {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(22, 139, 255, 0) 30%, var(--c-blue-2) 50%, rgba(22, 139, 255, 0) 70%, transparent 100%);
+  transform: translateX(-100%);
+}
+
+.divider__node {
+  position: absolute;
+  left: 50%;
+  top: -4px;
+  width: 9px;
+  height: 9px;
+  margin-left: -4.5px;
+  border: 1px solid var(--c-blue-2);
+  background: var(--c-black);
+  transform: rotate(45deg);
+  box-shadow: 0 0 12px rgba(45, 168, 255, 0.6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .divider__beam {
+    display: none;
+  }
+}

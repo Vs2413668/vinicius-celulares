@@ -1,0 +1,14 @@
+.not-found__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 12px;
+  margin-bottom: clamp(40px, 8vw, 120px);
+}
+
+@media (max-width: 559px) {
+  .not-found__actions,
+  .not-found__actions .btn {
+    width: 100%;
+  }
+}
